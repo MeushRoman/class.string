@@ -1,14 +1,14 @@
 #include "_string.h"
 
 
-//конструктор по умолчанию
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 _string::_string()
 {
-	this->str = nullptr; //создается пустая строка
+	this->str = nullptr; //СЃРѕР·РґР°РµС‚СЃСЏ РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
 	this->length = 0;
 }
 
-//конструктор фиксированного размера строки
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕРіРѕ СЂР°Р·РјРµСЂР° СЃС‚СЂРѕРєРё
 _string::_string(int length)
 {
 	this->str = new char[length+1];
@@ -16,7 +16,7 @@ _string::_string(int length)
 	this->length = length;
 }
 
-//конструктор создающий строку на основе str
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃРѕР·РґР°СЋС‰РёР№ СЃС‚СЂРѕРєСѓ РЅР° РѕСЃРЅРѕРІРµ str
 _string::_string(const char * str)
 {
 	this->str = new char[strlen(str) + 1];
@@ -24,7 +24,7 @@ _string::_string(const char * str)
 	this->length = strlen(str);
 }
 
-//конструктор копирования
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 _string::_string(const _string & obj)
 {
 	this->length = obj.length;
@@ -37,19 +37,19 @@ _string::_string(const _string & obj)
 
 }
 
-//конструктор возвращения строки
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РІРѕР·РІСЂР°С‰РµРЅРёСЏ СЃС‚СЂРѕРєРё
 int _string::getLength()
 {
 	return this->length;
 }
 
-//конструктор возвращения размера
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РІРѕР·РІСЂР°С‰РµРЅРёСЏ СЂР°Р·РјРµСЂР°
 const char * _string::getString()
 {
 	return this->str;
 }
 
-//конструктор перезаписи строки
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµР·Р°РїРёСЃРё СЃС‚СЂРѕРєРё
 void _string::setString(const char * str)
 {
 	this->~_string();
@@ -63,7 +63,7 @@ void _string::setString(const char * str)
 
 
 
-//конструктор ввода с консоли
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РІРІРѕРґР° СЃ РєРѕРЅСЃРѕР»Рё
 void _string::input()
 {
 	this->~_string();
@@ -77,19 +77,19 @@ void _string::input()
 	this->length = strlen(tmp);
 }
 
-//конструктор очистки строки
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РѕС‡РёСЃС‚РєРё СЃС‚СЂРѕРєРё
 void _string::clear()
 {
 	this->~_string();
 }
 
-//конструктор распечатки строки
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЂР°СЃРїРµС‡Р°С‚РєРё СЃС‚СЂРѕРєРё
 void _string::output()
 {
 	cout << this->str;
 }
 
-//деструктор
+//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 _string::~_string()
 {
 	if (this->str != nullptr) delete[] str;
