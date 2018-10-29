@@ -61,6 +61,56 @@ void _string::setString(const char * str)
 
 }
 
+void _string::insert(int position, const char * str)
+{
+	char *tmp;
+	int k = position;
+
+	if (str == nullptr || position < 0 || position > this->length) return;
+
+	if (this->str == nullptr && position == 0) {
+		this->setString(str);
+		return;
+	}
+
+	tmp = new char[this->length + strlen(str) + 1];
+	int newLength = length + strlen(str);
+	for (int i = 0, j = 0; i < newLength + 1; i++)
+	{
+		if (i < position) tmp[i] = this->str[i];
+		else
+			if (i >= position && j < strlen(str))	{
+				tmp[i] = str[j];
+				j++;
+			}
+			else	{
+				tmp[i] = this->str[k];
+				k++;
+			}
+	}
+	this->~_string();
+	this->str = tmp;
+	this->length = newLength;
+	this->str[length] = '\0';
+}
+
+void _string::erase(int position, int number)
+{
+	char *tmp;
+	if (position < 0 || this->str == nullptr || this->length < position + number) return;
+	int newLenght = this->length - number;
+	tmp = new char[newLenght + 1];
+	for (int i = 0; i < newLenght + 1; i++)
+	{
+		if (i < position)
+			tmp[i] = this->str[i];
+		else if (i >= position)
+			tmp[i] = this->str[i + number];
+	}
+	this->~_string();
+	this->str = tmp;
+	this->length = newLenght;
+}
 
 
 //конструктор ввода с консоли
